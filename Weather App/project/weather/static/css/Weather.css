@@ -1,0 +1,23 @@
+body{
+  background-color:rgb(255, 217, 179);
+}
+.city{
+  text-align: center;
+  position: center;
+  color:hsl(210, 100%, 60%);
+}
+.fa-sun-o{
+  color: rgb(255, 117, 26);
+}
+.jumbotron-fluid{
+  background-color: rgb(255, 255, 179);
+}
+.cityname{
+  margin-left:380px;
+}
+.input-group{
+  margin: auto;
+}
+.cardst{
+  margin: auto;
+}

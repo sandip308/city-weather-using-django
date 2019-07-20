@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/Weather.css' %}">
+  </head>
+  <body>
+    <div class="jumbotron " style="height:50px">
+  <h3 class="city"><i class="fa fa-sun-o" aria-hidden="true"></i>
+    Know Your City Weather</h3>
+</div>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="input-group mb-2 w-25 ">
+    {{form.name}}
+  <div class="input-group-append">
+    <button class="btn btn-primary " type="submit" id="button-addon2">Enter City</button>
+  </div>
+</div>
+<div class= container-fluid>
+{% if message %}
+<div class=' bg-{{message_style}} text-center mx-auto w-25'>
+{{message}}
+</div>
+{% endif %}
+</div>
+
+</form>
+{% for city_weather in weather %}
+<br>
+<div class="box cardst bg-secondary" style="width: 16rem; height:13rem;">
+<div class="media-right ">
+<a href="{% url 'delete_city' city_weather.city %}">
+<button class='delete'>X</button>
+</a>
+</div>
+<div class="media-left">
+<img class="w-25" src="http://openweathermap.org/img/wn/{{city_weather.icon}}.png">
+</div>
+<div class=" text-center" style="color:white;">
+<p >
+<h5>{{city_weather.city}}</h5>
+<p>{{city_weather.temparature}}°C</p>
+<p>{{city_weather.description}}</p>
+</p>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+  </body>
+</html>
